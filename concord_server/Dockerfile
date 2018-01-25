@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Install Python
-RUN apk add --no-cache python3 \
+RUN apk add --no-cache python3 jq \
     && pip3 install --no-cache --upgrade pip
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
