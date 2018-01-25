@@ -1,0 +1,7 @@
+jq
+requests
+stevedore
+prettytable
+pyserial
+flask
+concord232
