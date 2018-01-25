@@ -5,13 +5,27 @@ CONFIG_PATH=/data/options.json
 SERIAL=$(jq --raw-output ".serial" $CONFIG_PATH)
 DEBUG=$(jq --raw-output ".debug" $CONFIG_PATH)
 
-echo "Using $SERIAL"
+
+
+
+echo "SERIAL: $SERIAL"
 echo "DEBUG: $DEBUG"
 
 
+COMMAND = "/usr/bin/concord232_server"
+SERIAL_CMD = "--serial $SERIAL" 
+DEBUG_CMD = ""
+
+if $DEBUG ; then
+    DEBUG_CMD = "--debug"
+fi 
+
+
+
+
 { # try
-	echo "Trying SERIAL PORT: $SERIAL"
-    /usr/bin/concord232_server --serial $SERIAL --debug:$DEBUG 
+	echo "STARTING"
+    eval ${COMMAND} ${SERIAL_CMD} ${DEBUG_CMD} 
 
 } || { # catch
 	echo "$SERIAL does not appear to be valid"
