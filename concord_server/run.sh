@@ -2,12 +2,12 @@
 CONFIG_PATH=/data/options.json
 SERIAL=$(jq --raw-output ".serial" $CONFIG_PATH)
 DEBUG=$(jq --raw-output ".debug" $CONFIG_PATH)
-COMMAND = "/usr/bin/concord232_server"
-SERIAL_CMD = "--serial $SERIAL" 
-DEBUG_CMD = ""
+COMMAND="/usr/bin/concord232_server"
+SERIAL_CMD="--serial $SERIAL" 
+DEBUG_CMD=""
 
 if $DEBUG ; then
-    DEBUG_CMD = "--debug"
+    DEBUG_CMD="--debug"
 fi 
 
 { # try
