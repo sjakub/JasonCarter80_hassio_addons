@@ -2,10 +2,19 @@
 set -e
 CONFIG_PATH=/data/options.json
 
-PORT=$(jq --raw-output ".port" $CONFIG_PATH)
+SERIAL=$(jq --raw-output ".serial" $CONFIG_PATH)
 DEBUG=$(jq --raw-output ".debug" $CONFIG_PATH)
 
-echo "Using $PORT"
+echo "Using $SERIAL"
 echo "DEBUG: $DEBUG"
 
-/usr/bin/concord232_server --serial $PORT
+
+{ # try
+	echo "Trying SERIAL PORT: $SERIAL"
+    /usr/bin/concord232_server --serial $SERIAL --debug:$DEBUG 
+
+} || { # catch
+	echo "$SERIAL does not appear to be valid"
+	echo "Here are all your USB devices mapped to this container:"
+    ls /dev/ttyUSB*
+}

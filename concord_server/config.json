@@ -1,16 +1,18 @@
 {
   "name": "Concord Server",
-  "version": "0.45",
+  "version": "0.46",
   "slug": "concord_server",
   "description": "Concord 232 Server to work with HASSIO",
   "startup": "initialize",
   "boot": "auto",
   "timeout": 120,
   "options": {
-    "port": 5007
+    "serial": "/dev/ttyUSB0",
+    "debug": false
   },
   "schema": {
-    "port": "int"
+    "serial": "str",
+    "debug": "bool"
   },
   "ports": {
   	 "5007/tcp": 5007
