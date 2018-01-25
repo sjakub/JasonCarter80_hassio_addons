@@ -3,8 +3,9 @@
   "version": "0.44",
   "slug": "concord_server",
   "description": "Concord 232 Server to work with HASSIO",
-  "startup": "services",
+  "startup": "initialize",
   "boot": "auto",
+  "timeout": 180,
   "options": {
     "port": 5007
   },
