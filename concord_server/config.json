@@ -5,7 +5,7 @@
   "description": "Concord 232 Server to work with HASSIO",
   "startup": "initialize",
   "boot": "auto",
-  "timeout": 180,
+  "timeout": 120,
   "options": {
     "port": 5007
   },
