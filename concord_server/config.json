@@ -1,6 +1,6 @@
 {
   "name": "Concord Server",
-  "version": "0.44",
+  "version": "0.45",
   "slug": "concord_server",
   "description": "Concord 232 Server to work with HASSIO",
   "startup": "initialize",
