@@ -1,17 +1,7 @@
 #!/bin/bash
-set -e
 CONFIG_PATH=/data/options.json
-
 SERIAL=$(jq --raw-output ".serial" $CONFIG_PATH)
 DEBUG=$(jq --raw-output ".debug" $CONFIG_PATH)
-
-
-
-
-echo "SERIAL: $SERIAL"
-echo "DEBUG: $DEBUG"
-
-
 COMMAND = "/usr/bin/concord232_server"
 SERIAL_CMD = "--serial $SERIAL" 
 DEBUG_CMD = ""
@@ -19,9 +9,6 @@ DEBUG_CMD = ""
 if $DEBUG ; then
     DEBUG_CMD = "--debug"
 fi 
-
-
-
 
 { # try
 	echo "STARTING"
@@ -32,3 +19,5 @@ fi
 	echo "Here are all your USB devices mapped to this container:"
     ls /dev/ttyUSB*
 }
+
+while true; do echo 'Hit CTRL+C'; sleep 1; done
