@@ -11,7 +11,7 @@ CERTDIR="/data"
 
 
 log() {
-    echo "$(date +"[%Y-%m-%d %T,%3N]") <docker-entrypoint> $*" | tee -a ${BASEDIR}/logs/server.log
+    echo "$(date +"[%Y-%m-%d %T,%3N]") <docker-entrypoint> $*" 
 }
 
 # SSL certificate setup
