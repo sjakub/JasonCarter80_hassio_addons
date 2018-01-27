@@ -25,4 +25,3 @@ RUN chmod a+x /run/watch.sh
 
 CMD [ "/run/run.sh" ]
 
-EXPOSE 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp
