@@ -1,12 +1,9 @@
 FROM resin/rpi-raspbian:latest
 
-## Add JQ for Config Parsing 
-RUN apk add --no-cache jq
-
 RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | sudo tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
     apt-get update && \
-    apt-get install wget apt-utils unifi -y && \
+    apt-get install wget apt-utils unifi jq -y && \
     echo 'ENABLE_MONGODB=no' | sudo tee -a /etc/mongodb.conf > /dev/null
     
 RUN wget http://central.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.4-M3/snappy-java-1.1.4-M3.jar && \
