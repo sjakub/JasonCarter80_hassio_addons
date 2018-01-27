@@ -104,13 +104,18 @@ fi
 ### This is a simple watcher that checks that the Java process
 ### is running, if not, it will kill this script which is 
 ### streaming the server log to HASSIO console  
+log "Starting Watcher"
 /run/watch.sh $$ &
 
 ### Start the Java Process in the Background
+log "Starting Unifi in the background"
 /usr/bin/java -Xmx256M -jar /usr/lib/unifi/lib/ace.jar  start &
 
+log "Making log directory and server.log"
 mkdir -p /data/logs 
 touch /data/logs/server.log 
 
+
 ### Output the Logs to the Console
+log "Streamming log to the console for Hassio input"
 tail -f /data/logs/server.log
