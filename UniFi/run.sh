@@ -65,12 +65,14 @@ fi
 ### This is a simple watcher that checks that the Java process
 ### is running, if not, it will kill this script which is 
 ### streaming the server log to HASSIO console  
-/run/watch $$ &
+/run/watch.sh $$ &
 
 
 ### Start the Java Process in the Background
 /usr/bin/java -Xmx256M -jar /usr/lib/unifi/lib/ace.jar  start &
 
+mkdir -p /data/logs 
+touch /data/logs/server.log 
 
 ### Output the Logs to the Console
 tail -f /data/logs/server.log
