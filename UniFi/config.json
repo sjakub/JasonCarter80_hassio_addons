@@ -1,6 +1,6 @@
 {
   "name": "UniFi Controller",
-  "version": "0.986",
+  "version": "0.987",
   "slug": "unifi",
   "description": "Controller software for Ubiquiti devices",
   "arch": [
