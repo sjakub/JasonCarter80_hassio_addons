@@ -7,7 +7,7 @@ KEYFILE=$(jq --raw-output ".keyfile" $CONFIG_PATH)
 
 TEMPFILE=$(mktemp)
 CERTTEMPFILE=$(mktemp)
-CERTDIR="/data"
+DATADIR="/data"
 
 
 log() {
@@ -17,9 +17,9 @@ log() {
 # SSL certificate setup
 # Ref:  https://github.com/goofball222/unifi/blob/master/stable/root/usr/local/bin/docker-entrypoint.sh
 if [ -e /ssl/${KEYFILE} ] && [ -e /ssl/fullchain.pem ]; then
-    if `/usr/bin/sha256sum -c ${CERTDIR}/unificert.sha256 &> /dev/null`; then
+    if `/usr/bin/sha256sum -c ${DATADIR}/unificert.sha256 &> /dev/null`; then
         log "INFO - SSL: certificate files unchanged, continuing with UniFi startup"
-        log "INFO - SSL: To force rerun import process: delete '${CERTDIR}/unificert.sha256' and restart the container"
+        log "INFO - SSL: To force rerun import process: delete '${DATADIR}/unificert.sha256' and restart the container"
     else
         if [ ! -e ${DATADIR}/keystore ]; then
             log "WARN - SSL: keystore does not exist, generating it with Java keytool"
@@ -48,12 +48,12 @@ if [ -e /ssl/${KEYFILE} ] && [ -e /ssl/fullchain.pem ]; then
         rm ${TEMPFILE}
 
         log "INFO - SSL: Store SHA256 hash of private key and certificate file"
-        /usr/bin/sha256sum /ssl/${KEYFILE} > ${CERTDIR}/unificert.sha256
-        /usr/bin/sha256sum /ssl/${CERTFILE} >> ${CERTDIR}/unificert.sha256
+        /usr/bin/sha256sum /ssl/${KEYFILE} > ${DATADIR}/unificert.sha256
+        /usr/bin/sha256sum /ssl/${CERTFILE} >> ${DATADIR}/unificert.sha256
 
         log "INFO - SSL: completed update of custom certificate in '${DATADIR}/keystore'"
         log "INFO - SSL: Check above ***here*** for errors if your custom certificate import isn't working"
-        log "INFO - SSL: To force rerun import process: delete '${CERTDIR}/unificert.sha256' and restart the container"
+        log "INFO - SSL: To force rerun import process: delete '${DATADIR}/unificert.sha256' and restart the container"
     fi
 else
     [ -f /ssl/${KEYFILE} ] || log "WARN - SSL: missing '/ssl/${KEYFILE}', cannot update certificate in '${DATADIR}/keystore'"
