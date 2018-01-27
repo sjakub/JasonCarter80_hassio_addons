@@ -72,7 +72,7 @@ _EOF
     if [[ "${CERTURI}" == *"letsencrypt"* && "$CERT_IS_CHAIN" == "true" ]]; then
         awk 1 "${CERTTEMPFILE}" "${CERTDIR}/${CERTNAME}" >> "${CHAIN}"
     elif [[ "${CERTURI}" == *"letsencrypt"* ]]; then
-        awk 1 "${CERTTEMPFILE}" "${CERTDIR}/chain.pem" "${CERTDIR}/${CERTNAME}" >> "${CHAIN}"
+        awk 1 "${CERTTEMPFILE}" "${CERTDIR}/${CERTNAME}" "${CERTDIR}/${CERTNAME}" >> "${CHAIN}"
     elif [[ -f "${CERTDIR}/ca.pem" ]]; then
         awk 1 "${CERTDIR}/ca.pem" "${CERTDIR}/chain.pem" "${CERTDIR}/${CERTNAME}" >> "${CHAIN}"
     else

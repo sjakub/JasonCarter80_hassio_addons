@@ -1,12 +1,12 @@
 {
   "name": "UniFi Controller",
-  "version": "0.987",
+  "version": "0.988",
   "slug": "unifi",
   "description": "Controller software for Ubiquiti devices",
   "arch": [
     "armhf"
   ],
-  "map": ["ssl"],
+  "map": ["ssl:rw"],
   "startup": "services",
   "webui": "https://[HOST]:[PORT:8443]/",
   "boot": "auto",
