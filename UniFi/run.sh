@@ -16,7 +16,7 @@ log() {
 
 # SSL certificate setup
 # Ref:  https://github.com/goofball222/unifi/blob/master/stable/root/usr/local/bin/docker-entrypoint.sh
-if [ -e /ssl/${KEYFILE} ] && [ -e ${CERTDIR}/fullchain.pem ]; then
+if [ -e /ssl/${KEYFILE} ] && [ -e /ssl/fullchain.pem ]; then
     if `/usr/bin/sha256sum -c ${CERTDIR}/unificert.sha256 &> /dev/null`; then
         log "INFO - SSL: certificate files unchanged, continuing with UniFi startup"
         log "INFO - SSL: To force rerun import process: delete '${CERTDIR}/unificert.sha256' and restart the container"
