@@ -9,6 +9,11 @@ TEMPFILE=$(mktemp)
 CERTTEMPFILE=$(mktemp)
 CERTDIR="/data"
 
+
+log() {
+    echo "$(date +"[%Y-%m-%d %T,%3N]") <docker-entrypoint> $*" | tee -a ${BASEDIR}/logs/server.log
+}
+
 # SSL certificate setup
 # Ref:  https://github.com/goofball222/unifi/blob/master/stable/root/usr/local/bin/docker-entrypoint.sh
 if [ -e /ssl/${KEYFILE} ] && [ -e ${CERTDIR}/fullchain.pem ]; then
