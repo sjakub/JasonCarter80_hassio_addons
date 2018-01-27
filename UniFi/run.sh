@@ -67,6 +67,7 @@ fi
 ### streaming the server log to HASSIO console  
 /run/watch.sh $$ &
 
+echo  "unifi.http.port=8080" > /data/system.properties
 
 ### Start the Java Process in the Background
 /usr/bin/java -Xmx256M -jar /usr/lib/unifi/lib/ace.jar  start &
