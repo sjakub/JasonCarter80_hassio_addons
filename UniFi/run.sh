@@ -24,7 +24,6 @@ log 'Cert directory found. Checking Certs'
 
 if `md5sum -c "${CERTDIR}/${CERTNAME}.md5" &>/dev/null`; then
     log "Cert has not changed, not updating controller."
-    exit 0
 else
     if [ ! -e "${DATADIR}/keystore" ]; then
         log "WARN: Missing keystore, creating a new one"
