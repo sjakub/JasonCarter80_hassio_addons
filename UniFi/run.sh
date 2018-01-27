@@ -34,7 +34,7 @@ if [ -e /ssl/${KEYFILE} ] && [ -e /ssl/fullchain.pem ]; then
         log "INFO - SSL: openssl combine custom private key and certificate chain into temporary PKCS12 file"
         openssl pkcs12 -export \
             -inkey /ssl/${KEYFILE} \
-            -in /ssl/{$CERTFILE} \
+            -in /ssl/${CERTFILE} \
             -out ${TEMPFILE} \
             -name ubnt -password pass:temppass
 
