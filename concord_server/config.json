@@ -3,6 +3,7 @@
   "version": "0.46",
   "slug": "concord_server",
   "description": "Concord 232 Server to work with HASSIO",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "initialize",
   "boot": "auto",
   "timeout": 120,
